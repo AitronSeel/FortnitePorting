@@ -15,4 +15,16 @@
       <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CUE4Parse\CUE4Parse\CUE4Parse.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="meow.mp4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="meow.wmv" />
+    </ItemGroup>
+
 </Project>

@@ -1,0 +1,46 @@
+﻿<adonisCtrls:AdonisWindow x:Class="FortnitePorting.Views.SettingsView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                          xmlns:adonisCtrls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                          xmlns:local="clr-namespace:FortnitePorting"
+                          xmlns:markupExt="clr-namespace:FortnitePorting.Extensions.Markup"
+                          xmlns:cue4parse="clr-namespace:CUE4Parse;assembly=CUE4Parse"
+                          WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
+                          Closing="OnClose">
+    <Window.Style>
+        <Style TargetType="adonisCtrls:AdonisWindow">
+            <Setter Property="Title" Value="Settings"/>
+            <Setter Property="Width" Value="480"/>
+            <Setter Property="Height" Value="640"/>
+        </Style>
+    </Window.Style>
+    <Grid Margin="{adonisUi:Space 1}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="{adonisUi:Space 1}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="{adonisUi:Space 1}" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="{adonisUi:Space 1}" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="{adonisUi:Space 1}" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Language" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" ItemsSource="{markupExt:EnumToItemsSource {x:Type cue4parse:UE4.Versions.ELanguage}}" SelectedItem="{Binding Language, Converter={StaticResource EnumToStringConverter}}"/>
+        
+        <!-- TODO Actually Implement Fortnite Live Selection-->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Installation Type" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" ItemsSource="{markupExt:EnumToItemsSource local:EInstallType}" SelectedItem="{Binding InstallType, Converter={StaticResource EnumToStringConverter}}"/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Archive Path" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ArchivePath}" IsEnabled="{Binding IsLocalInstall, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Row="4" Grid.Column="4" Content="..." Click="OnBrowseArchivePath" IsEnabled="{Binding IsLocalInstall, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</adonisCtrls:AdonisWindow>

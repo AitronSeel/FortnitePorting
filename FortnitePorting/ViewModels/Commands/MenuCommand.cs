@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using FortnitePorting.Framework;
+using FortnitePorting.Views;
 
 namespace FortnitePorting.ViewModels.Commands;
 
@@ -21,11 +22,14 @@ public class MenuCommand : ViewModelCommand<MainViewModel>
             case "File_Assets":
                 Process.Start(new ProcessStartInfo { FileName = Path.Combine(Directory.GetCurrentDirectory(), "Assets"), UseShellExecute = true });
                 break;
+            case "File_Restart":
+                ApplicationView.Restart();
+                break;
             case "File_Exit":
                 Application.Current.Shutdown();
                 break;
             case "Options_Settings":
-                //Helper.OpenWindow<SettingsView>();
+                Helper.OpenWindow<SettingsView>();
                 break;
             case "Tools_BundleDownloader":
                 //Helper.OpenWindow<BundleDownloaderView>();
