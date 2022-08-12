@@ -19,12 +19,4 @@
       <ProjectReference Include="..\CUE4Parse\CUE4Parse\CUE4Parse.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Remove="meow.mp4" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="meow.wmv" />
-    </ItemGroup>
-
 </Project>
